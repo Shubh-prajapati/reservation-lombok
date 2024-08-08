@@ -1,8 +1,7 @@
-package com.reservation.example.repository;
+package com.reservation.repository;
 
-import com.reservation.example.model.Reservation;
-import com.reservation.example.model.User;
-import com.reservation.example.service.ConnectionService;
+import com.reservation.model.Reservation;
+import com.reservation.service.ConnectionService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -72,11 +71,11 @@ public class ReservationRepository {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
 
-            preparedStatement.setLong(1, reservation.getReservation_id());
-            preparedStatement.setInt(2, reservation.getTrain_number());
-            preparedStatement.setString(3, reservation.getClass_type());
-            preparedStatement.setLong(4, reservation.getPNR_NO());
-            preparedStatement.setInt(5, reservation.getJourney_date());
+            preparedStatement.setLong(1, reservation.getReservationId());
+            preparedStatement.setInt(2, reservation.getTrainNumber());
+            preparedStatement.setString(3, reservation.getClassType());
+            preparedStatement.setLong(4, reservation.getPnrNo());
+            preparedStatement.setInt(5, reservation.getJourneyDate());
 
             System.out.println("Update reservation details to reservation table: " + reservation);
             int rowInserted = preparedStatement.executeUpdate();
@@ -91,7 +90,7 @@ public class ReservationRepository {
     }
 // Method to delete user data from database
 
-    public boolean deleteUser(long reservation_id) throws SQLException {
+    public boolean deleteReservation(long reservation_id) throws SQLException {
         this.initConnection();
 
         String query = "DELETE FROM reservation WHERE reservation_id";

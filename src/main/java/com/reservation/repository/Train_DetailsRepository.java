@@ -1,7 +1,8 @@
-package com.reservation.example.repository;
+package com.reservation.repository;
 
-import com.reservation.example.model.Train_Details;
-import com.reservation.example.service.ConnectionService;
+import com.reservation.model.Train_Details;
+import com.reservation.service.ConnectionService;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,14 +61,14 @@ public class Train_DetailsRepository {
     public boolean insertTrain_Details(Train_Details train_details) throws SQLException {
         this.initConnection();
 
-        String query = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO train VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, train_details.getTrain_number());
-            preparedStatement.setString(2, train_details.getClass_type());
-            preparedStatement.setString(3, train_details.getSource_station());
-            preparedStatement.setString(4, train_details.getDestination_station());
-            preparedStatement.setInt(5, train_details.getCurrent_available());
+            preparedStatement.setInt(1, train_details.getTrainNumber());
+            preparedStatement.setString(2,train_details.getSourceStation());
+            preparedStatement.setString(3,train_details.getDestinationStation());
+            preparedStatement.setString(4, train_details.getClassType());
+            preparedStatement.setInt(5, train_details.getCurrentAvailable());
 
             System.out.println("Update  details of train to train Table: " + train_details);
             int rowInserted = preparedStatement.executeUpdate();
@@ -83,14 +84,14 @@ public class Train_DetailsRepository {
     public boolean updateTrain_Details(Train_Details trainDetails) throws SQLException {
         this.initConnection();
 
-        String query="UPDATE Train SET train_number = ?, class_type = ?, source_station= ? destination_station = ?  current_available = ? WHERE ID=?  ";
+        String query="UPDATE Train SET train_number = ?,  source_station= ?, destination_station = ?, classType=?  current_available = ? WHERE ID=?  ";
         try(PreparedStatement preparedStatement=connection.prepareStatement(query)){
 
-            preparedStatement.setInt(1,trainDetails.getTrain_number());
-            preparedStatement.setString(2, trainDetails.getClass_type());
-            preparedStatement.setString(3, trainDetails.getSource_station());
-            preparedStatement.setString(4, trainDetails.getDestination_station());
-            preparedStatement.setInt(5, trainDetails.getCurrent_available());
+            preparedStatement.setInt(1,trainDetails.getTrainNumber());
+            preparedStatement.setString(2, trainDetails.getSourceStation());
+            preparedStatement.setString(3, trainDetails.getDestinationStation());
+            preparedStatement.setString(4, trainDetails.getClassType());
+            preparedStatement.setInt(5, trainDetails.getCurrentAvailable());
 
 
             System.out.println("Updating user of details to user Table: "+trainDetails);

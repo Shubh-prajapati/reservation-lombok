@@ -1,8 +1,7 @@
-package com.reservation.example.service;
+package com.reservation.service;
 
-import com.reservation.example.model.Train_Details;
-import com.reservation.example.repository.Train_DetailsRepository;
-
+import com.reservation.model.Train_Details;
+import com.reservation.repository.Train_DetailsRepository;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,21 +21,21 @@ public class TrainServices {
          Scanner scanner=new Scanner(System.in);
 
          System.out.println("Enter the Train Number: ");
-         Integer train_Number=Integer.valueOf(scanner.nextLine());
+         Integer trainNumber=Integer.valueOf(scanner.nextLine());
 
          System.out.println("Enter the Your Source Station");
-         String source_station=scanner.nextLine();
+         String sourceStation=scanner.nextLine();
 
          System.out.println("Enter Your Destination Station");
-         String destination_station=scanner.nextLine();
+         String destinationStation=scanner.nextLine();
 
          System.out.println("Which class do you travel plz Enter it");
-         String class_type=scanner.next();
+         String classType=scanner.next();
 
          System.out.println("Current Available");
-         Integer current_available=Integer.valueOf(scanner.nextLine());
+        int currentAvailable= scanner.nextInt();
 
-         Train_Details train_details =new Train_Details(train_Number,source_station,destination_station,class_type,current_available);
+         Train_Details train_details =new Train_Details(trainNumber,sourceStation,destinationStation,classType,currentAvailable);
          if (DETAILS_REPOSITORY.insertTrain_Details(train_details)){
 
              System.out.println("Train Details Successfully! ");
@@ -66,7 +65,7 @@ public class TrainServices {
         String class_type=scanner.next();
 
         System.out.println("Current Available");
-        Integer current_available=Integer.valueOf(scanner.nextLine());
+        Integer current_available=Integer.parseInt(scanner.nextLine());
 
         Train_Details train_details=new Train_Details(train_Number,source_station,destination_station,class_type,current_available);
 

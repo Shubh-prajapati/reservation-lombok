@@ -1,4 +1,4 @@
-package com.reservation.example;
+package com.reservation;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,8 +1,7 @@
-package com.reservation.example.service;
+package com.reservation.service;
 
-import com.reservation.example.model.User;
-import com.reservation.example.repository.UserRepository;
-
+import com.reservation.model.Users;
+import com.reservation.repository.UserRepository;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.Scanner;
 public class UserServices {
 
     private  static final UserRepository USER_REPO =new UserRepository();
-    private List<User> retrieveUser(){
+    public List<Users> retrieveUser(){
         return  USER_REPO.retrieveUser();
     }
     // Method to insert data into User database
@@ -34,18 +33,18 @@ public class UserServices {
         System.out.println("Please Enter a Address: ");
         String address=scanner.nextLine();
 
-        User user=new User(id,name,email,mobile_no,address);
-        if(USER_REPO.insertUser(user)){
+        Users users =new Users(id,name,email,mobile_no,address);
+        if(USER_REPO.insertUser(users)){
             System.out.println("User Details Inserted Successfully! ");
 
         }else {
-            System.out.println("Failed to insert Customer. ");
+            System.out.println("Failed to insert data ");
         }
         return false;
     }
 
 
-    //Method  to Update User into User Database
+    //Method to Update User into User Database
     public  boolean updateUser() throws  SQLException{
      Scanner scanner=new Scanner(System.in);
 
@@ -64,10 +63,10 @@ public class UserServices {
         System.out.println("Please Enter a Address: ");
         String address=scanner.nextLine();
 
-        User user=new User(id,name,email,mobile_no,address);
+        Users users =new Users(id,name,email,mobile_no,address);
 
-        if(USER_REPO.updateUser(user)){
-            System.out.println("User details inserted successfully");
+        if(USER_REPO.updateUser(users)){
+            System.out.println("User details Updated successfully");
         }
         else
         {

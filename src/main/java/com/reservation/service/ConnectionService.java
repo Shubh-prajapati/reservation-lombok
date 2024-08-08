@@ -1,4 +1,4 @@
-package com.reservation.example.service;
+package com.reservation.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,12 +7,12 @@ import java.sql.SQLException;
 public class ConnectionService {
     public Connection getConnection() {
 
-        Connection connection=null;
+        Connection connection = null;
         try {
             String url="jdbc:mysql://localhost:3306/reservationdb";
             String username="root";
-            String password=" ";
-            connection = DriverManager.getConnection(url ,username,password);
+            String password="shubh@3098";
+            connection = DriverManager.getConnection(url ,username, password);
         }catch (SQLException e){
             System.err.println("Connection error: "+e.getMessage());
         }

@@ -1,8 +1,8 @@
-package com.reservation.example.repository;
+package com.reservation.repository;
 
-import com.reservation.example.model.Payment_Details;
+import com.reservation.model.Payment_Details;
 
-import com.reservation.example.service.ConnectionService;
+import com.reservation.service.ConnectionService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -37,8 +37,6 @@ public class Payment_DetailsRepository {
                     String user_name=resultSet.getString("user_name");
                     double amount=resultSet.getDouble("amount");
 
-
-
                 }
             }catch(SQLException e){
                 System.err.println("SQL err: "+ e.getMessage());
@@ -64,10 +62,10 @@ public class Payment_DetailsRepository {
      try(PreparedStatement preparedStatement=connection.prepareStatement(query)){
 
 
-         preparedStatement.setLong(1,paymentDetails.getPayment_id());
-         preparedStatement.setLong(2,paymentDetails.getReservation_id());
-         preparedStatement.setInt(3,paymentDetails.getUser_id());
-         preparedStatement.setString(4,paymentDetails.getUser_name());
+         preparedStatement.setLong(1,paymentDetails.getPaymentId());
+         preparedStatement.setLong(2,paymentDetails.getReservationId());
+         preparedStatement.setInt(3,paymentDetails.getUserId());
+         preparedStatement.setString(4,paymentDetails.getUserName());
          preparedStatement.setDouble(5,paymentDetails.getAmount());
 
 

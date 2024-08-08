@@ -1,7 +1,7 @@
-package com.reservation.example.repository;
+package com.reservation.repository;
 
-import com.reservation.example.model.Station;
-import com.reservation.example.service.ConnectionService;
+import com.reservation.model.Station;
+import com.reservation.service.ConnectionService;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +58,8 @@ public class StationRepository {
         String query="INSERT INTO Station VALUES (?,?)";
         try (PreparedStatement preparedStatement=connection.prepareStatement(query)){
 
-            preparedStatement.setInt(1, station.getStation_id());
-            preparedStatement.setInt(2, station.getUser_id());
+            preparedStatement.setInt(1, station.getStationId());
+            preparedStatement.setInt(2, station.getUserId());
 
 
             System.out.println("inserting station details into Station table: "+ station);
@@ -78,8 +78,8 @@ public class StationRepository {
         String query="UPDATE station SET station_id= ?";
         try(PreparedStatement preparedStatement=connection.prepareStatement(query)){
 
-            preparedStatement.setInt(1,station.getStation_id());
-            preparedStatement.setInt(2,station.getUser_id());
+            preparedStatement.setInt(1,station.getStationId());
+            preparedStatement.setInt(2,station.getUserId());
 
             System.out.println("Inserting details of station into Station table: "+station);
             int rowInserted =preparedStatement.executeUpdate();
